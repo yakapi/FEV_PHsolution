@@ -474,5 +474,21 @@ table {
 		gap: 10px;
 		border-right: 1px solid rgba(255, 0, 0, 0);
 	}
+
 /* PLUGIN SALARIE */
 /* PLUGIN SALARIE */
+
+/* MANAGER */
+/* MANAGER */
+	.screen_manager{
+		position: absolute;
+		z-index: -1;
+		width: 100%;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: #ECECEC;
+	}
+/* MANAGER */
+/* MANAGER */

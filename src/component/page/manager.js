@@ -5,6 +5,7 @@ import Cookies from 'universal-cookie';
 
 import {Outlet, useLocation, Navigate} from 'react-router-dom'
 
+import Screen from '../screen' 
 import Navigation from "../navigation/navigation"
 
 export default function ManagerChecker(){
@@ -18,6 +19,7 @@ export default function ManagerChecker(){
     return(
       <div>
         <Navigation/>
+        <Screen />
         <Outlet/>
       </div>
     )
