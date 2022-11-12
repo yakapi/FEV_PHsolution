@@ -15,6 +15,7 @@ export function UserContextProvider(props){
     "type": "",
     "plugins": []
   })
+
   const [loadingDataUser, setLoadingDataUser] = useState(true)
   const connexion = (email , pwd) => signInWithEmailAndPassword(auth, email, pwd)
   const inscription = (email, pwd) => createUserWithEmailAndPassword(auth, email, pwd)
@@ -27,11 +28,12 @@ export function UserContextProvider(props){
     // const cityList = citySnapshot.docs.map(doc => doc.data());
     // return cityList
   }
-  const addUser = async (id, name) => {
+  const addUser = async (id, name, mail) => {
     await setDoc(doc(db, "team", id), {
   name: name,
   type: "equipe",
-  allow: ["Calendrier", "RDV", "Congé"]
+  allow: ["Calendrier", "RDV", "Congé"],
+  mail: mail
 });
   }
   const getAllUser = async () => {

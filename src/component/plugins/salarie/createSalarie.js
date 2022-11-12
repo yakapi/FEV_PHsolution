@@ -1,7 +1,7 @@
 import React, {useRef, useContext} from 'react'
-
+import {signOut} from 'firebase/auth'
 import {UserContext} from "../../../context/userContext"
-
+import {auth} from "../../../firebase-config"
 
 export default function CreateSalarie({modalState, setResult}){
   const {inscription, addUser} =useContext(UserContext)
@@ -20,13 +20,14 @@ export default function CreateSalarie({modalState, setResult}){
         console.log(cred);
         let uid = cred.user.uid
         try {
-            const cred2 = await addUser(uid, createSalarie.current[1].value)
+            const cred2 = await addUser(uid, createSalarie.current[1].value, createSalarie.current[0])
             setResult("Salarié ajouté avec succès !")
         } catch (e) {
           setResult('ERROR2')
         }
       } catch (e) {
         setResult("error")
+        console.log(e);
       }
   }
 

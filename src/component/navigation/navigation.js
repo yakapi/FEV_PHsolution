@@ -1,9 +1,11 @@
 import React , {useContext, useEffect} from "react"
 
-import {Link, useLocation} from "react-router-dom"
+import {Link} from "react-router-dom"
 import {UserContext} from "../../context/userContext"
 import Cookies from 'universal-cookie';
 import { v4 as uuidv4 } from 'uuid';
+import {signOut} from "firebase/auth"
+import {auth} from '../../firebase-config'
 
 import Leaf from "../../assets/images/white_leaf.png"
 
@@ -11,8 +13,13 @@ import Leaf from "../../assets/images/white_leaf.png"
 export default function Navigation(){
   const{userInfo, setUserInfo} = useContext(UserContext)
   const cookies = new Cookies()
+  const logOut = async () =>{
+    try {
+      await signOut(auth)
+    } catch (e) {
 
-  const location = useLocation()
+    }
+  }
 
   useEffect(()=>{
     function isEmpty(str) {
@@ -33,7 +40,7 @@ export default function Navigation(){
         <div className="userboard">
           <p className="utilisateur">utilisateur : {userInfo.name}</p>
           <p className="link_green">Aide</p>
-          <p className="link_red">Déconnexion</p>
+          <p onClick={logOut} className="link_red">Déconnexion</p>
         </div>
       </div>
       <div className="menu">
