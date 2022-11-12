@@ -40,13 +40,13 @@ export default function Home(){
       // formRef.current.reset()
       let array_first_cred = [cred.user.email,cred.user.uid]
       try {
-        const cred2 = await checkUser("hello")
+        const cred2 = await checkUser(array_first_cred[1])
         let userState = {
           "uid": array_first_cred[1],
           "email": array_first_cred[0],
-          "name": cred2[0].name,
-          "type": cred2[0].type,
-          "plugins": cred2[0].allow
+          "name": cred2.name,
+          "type": cred2.type,
+          "plugins": cred2.allow
         }
         cookies.set('infoUser', userState, {path: '/'})
         setUserInfo(userState)

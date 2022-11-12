@@ -3,7 +3,8 @@ export default function ReservationPlugin(){
     <div className="plugin_container">
       <div className="plugin_brik"></div>
       <div className="plugin_box">
-        Reservation
+      <h2 className="title_plugin">Réservation</h2>
+      <div className="content_plugin">QSDQSDQSDQSDQSDQSDQSDQSDQSQSDQSDQSD</div>
       </div>
     </div>
   )

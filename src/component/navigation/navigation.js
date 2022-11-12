@@ -1,8 +1,9 @@
 import React , {useContext, useEffect} from "react"
 
-import {Link} from "react-router-dom"
+import {Link, useLocation} from "react-router-dom"
 import {UserContext} from "../../context/userContext"
 import Cookies from 'universal-cookie';
+import { v4 as uuidv4 } from 'uuid';
 
 import Leaf from "../../assets/images/white_leaf.png"
 
@@ -10,6 +11,8 @@ import Leaf from "../../assets/images/white_leaf.png"
 export default function Navigation(){
   const{userInfo, setUserInfo} = useContext(UserContext)
   const cookies = new Cookies()
+
+  const location = useLocation()
 
   useEffect(()=>{
     function isEmpty(str) {
@@ -37,8 +40,8 @@ export default function Navigation(){
         <div className="menu_content">
           <div className="menu_plugin">
             {userInfo.plugins.map((element, i)=>(
-              <Link to={"/manager/"+element}>
-                <div className="PluginLink" key={"Link"+element}>
+              <Link to={"/manager/"+element} key={uuidv4()}>
+                <div className="PluginLink" >
                   <p>{element}</p>
                 </div>
               </Link>
